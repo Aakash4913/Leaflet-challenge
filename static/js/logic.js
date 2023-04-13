@@ -20,17 +20,17 @@ function getColor(depth) {
 
   //this is to get diff colors depending on the depth of the earthquake
     if (depth <= 10) {
-        return "#08E747";
+        return "#08E800";
     } else if (depth > 10 && depth <= 30) {
-        return "#FFFF00";
+        return "#FFFE99";
     } else if (depth > 30 && depth <= 50) {
-        return "#FFD580";
+        return "#FFD680";
     } else if (depth > 50 && depth <= 70) {
-        return "#F28C28";
+        return "#F28D30";
     } else if (depth > 70 && depth <= 90) {
-        return "#FF7518";
+        return "#FF7578";
     } else if (depth > 90) {
-        return "#FF4433";
+        return "#FF4500";
     }
 }
 
