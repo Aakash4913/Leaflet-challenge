@@ -17,6 +17,8 @@ var queryUrl = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_we
 
 
 function getColor(depth) {
+
+  //this is to get diff colors depending on the depth of the earthquake
     if (depth <= 10) {
         return "#08E747";
     } else if (depth > 10 && depth <= 30) {
@@ -34,7 +36,7 @@ function getColor(depth) {
 
 
 d3.json(queryUrl).then(function(data) {
-
+//we are looping through the Json file of the queryURL here
     for (var i = 0; i < data.features.length; i++) {
     var earthquakes = data.features[i]
     var coord = earthquakes.geometry.coordinates
@@ -43,10 +45,13 @@ d3.json(queryUrl).then(function(data) {
         let date = new Date(timestamp);
         let humanReadableDate = date.toLocaleString();  
     var depth = earthquakes.geometry.coordinates[2]
+
+    //the size of the circle will be determined by this formula 
     var size = magnitude * 4
     var markerColor = getColor(depth);
 
-
+    //in the marker variable we are getting our coordinates and putting together the variables we made earlier
+      //in the popup we are giving some info when we hover over the earthquake circle on the map 
     var marker = L.circleMarker([coord[1],coord[0]], {
         radius: size,
         color: markerColor,
@@ -78,3 +83,5 @@ d3.json(queryUrl).then(function(data) {
 legend.addTo(myMap);
 
 })
+
+
